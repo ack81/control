@@ -1,0 +1,2 @@
+---
+openssh::server::macs: hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,hmac-md5

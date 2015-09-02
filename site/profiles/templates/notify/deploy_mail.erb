@@ -1,0 +1,18 @@
+<h2>Puppet Managed Node</h2>
+<pre><b>Hostname   :</b> <%= @hostname %>
+<% if @is_virtual == true %><b>Virtual    :</b> <%= @manufacturer %><% end %><% if @is_virtual == false %><b>Physical   :</b> <%= @manufacturer %><% end %>
+<b>Domain     :</b> <%= @domain %>
+<b>Platform   :</b> <%= @operatingsystem %> <%= @operatingsystemmajrelease %> <%= @architecture %>
+<b>Network    :</b> <%= @ipaddress_eth0 %>
+             <%= @netmask_eth0 %>
+             <%= @macaddress_eth0 %>
+<b>CPUs       :</b> <%= @processorcount %>
+<b>Memory     :</b> <%= @memorysize %>
+</pre>
+<h4>TDS Department<br>
+Williams Sonoma, Inc.<br>
+Support Email: ithelpdesk@wsgc.com<br></h4>
+<b>Node Classification:</b><br>
+<% classes.each do |klass| -%>
+<b>CLASS:</b> <%= klass %><br>
+<% end -%>

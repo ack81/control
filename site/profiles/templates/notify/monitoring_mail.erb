@@ -1,0 +1,21 @@
+<h2>Puppet Managed Node</h2>
+<h4>THIS IS AN AUTOMATED EMAIL<br>
+PLEASE DO NOT REPLY!</h4>
+<pre>Monitoring agent may be
+installed. Please check to make
+sure the agent is installed and
+running.
+</pre><br>
+<pre><b>Hostname   :</b> <%= @hostname %>
+<% if @is_virtual == true %><b>Virtual    :</b> <%= @manufacturer %><% end %><% if @is_virtual == false %><b>Physical   :</b> <%= @manufacturer %><% end %>
+<b>Domain     :</b> <%= @domain %>
+<b>Platform   :</b> <%= @operatingsystem %> <%= @operatingsystemmajrelease %> <%= @architecture %>
+<b>Network    :</b> <%= @ipaddress_eth0 %>
+             <%= @netmask_eth0 %>
+             <%= @macaddress_eth0 %>
+<b>CPUs       :</b> <%= @processorcount %>
+<b>Memory     :</b> <%= @memorysize %>
+</pre>
+<h4>TDS Department<br>
+Williams Sonoma, Inc.<br>
+Support Email: ithelpdesk@wsgc.com<br></h4>

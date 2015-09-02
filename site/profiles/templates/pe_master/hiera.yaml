@@ -1,0 +1,13 @@
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - "nodes/%{::clientcert}"
+  - "%{domain}"
+  - "%{osfamily}"
+  - "%{environment}"
+  - defaults
+
+:yaml:
+   :datadir: "/etc/puppetlabs/puppet/environments/%{environment}/hieradata"

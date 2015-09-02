@@ -1,0 +1,11 @@
+---
+openssh::server::permitrootlogin: 'no'
+openssh::server::ciphers: 'aes128-ctr,aes192-ctr,aes256-ctr'
+openssh::server::macs: 'hmac-sha2-512,hmac-sha2-256,hmac-ripemd160'
+openssh::server::banner: '/etc/issue.net'
+openssh::server::clientaliveinterval: '300'
+openssh::server::clientalivecountmax: '0'
+puppet_enterprise::profile::console::whitelisted_certnames:
+  - jenkins
+puppet_enterprise::profile::certificate_authority::client_whitelist:
+  - jenkins
