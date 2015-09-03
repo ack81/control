@@ -1,4 +1,4 @@
-class profiles::repo::epel {
+class profiles::base::repo::epel {
   require ::profiles::repo::config
 
   class { '::epel':

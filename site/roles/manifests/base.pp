@@ -1,7 +1,9 @@
 # base.pp
 
 class roles::base {
-  include ::profiles::accounts
+  include ::profiles::accounts::config
+  include ::profiles::accounts::priv
+  include ::profiles::accounts::service
   include ::profiles::files
   include ::profiles::firstrun
   include ::profiles::grub

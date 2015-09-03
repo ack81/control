@@ -1,4 +1,4 @@
-class profiles::accounts::config {
+class profiles::system::accounts::config {
   case $::osfamily {
     'RedHat': {
 

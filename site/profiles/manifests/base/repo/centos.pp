@@ -1,4 +1,4 @@
-class profiles::repo::centos {
+class profiles::base::repo::centos {
   if $::operatingsystem == 'CentOS' {
     require ::profiles::repo::config
 

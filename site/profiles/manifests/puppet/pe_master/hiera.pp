@@ -1,10 +1,10 @@
-class profiles::pe_master::hiera {
+class profiles::puppet::pe_master::hiera {
   file { '/etc/puppetlabs/puppet/hiera.yaml':
     ensure  => file,
     owner   => '0',
     group   => '0',
     mode    => '0644',
-    content => template('profiles/pe_master/hiera.yaml'),
+    content => template('profiles/puppet/pe_master/hiera.yaml.erb'),
     notify  => Service['pe-puppetserver'],
   }
   include r10k::install::pe_gem

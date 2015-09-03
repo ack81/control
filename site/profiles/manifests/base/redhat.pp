@@ -1,4 +1,4 @@
-class profiles::redhat (
+class profiles::base::redhat (
   $rhn_url  = 'http://rhnsatrk1v.wsgc.com/XMLRPC',
   $rhn_user = 'rhn_puppet',
   $rhn_pass = 'pm@ster5000!',) {

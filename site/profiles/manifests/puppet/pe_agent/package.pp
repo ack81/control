@@ -1,4 +1,4 @@
-class profiles::pe_agent::package (
+class profiles::puppet::pe_agent::package (
   $pe_master = 'cfgprdsac01v.wsgc.com',
   $version   = 'current',
 ) {

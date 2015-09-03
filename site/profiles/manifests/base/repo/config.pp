@@ -1,4 +1,4 @@
-class profiles::repo::config (
+class profiles::base::repo::config (
   $reposdir  = '/etc/yum.repos.d',
   $sslverify = '0',
 ) {

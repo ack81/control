@@ -1,4 +1,4 @@
-class profiles::grub {
+class profiles::base::grub {
   file { 'etc_grub.conf':
     ensure => link,
     owner  => 'root',

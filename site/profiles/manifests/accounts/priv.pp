@@ -1,4 +1,4 @@
-class profiles::accounts::priv {
+class profiles::system::accounts::priv {
   case $::osfamily {
     'RedHat': {
       $root_home     = '/root'

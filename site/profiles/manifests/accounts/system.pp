@@ -1,6 +1,6 @@
-class profiles::accounts::service {
-  include profiles::accounts::config
-  $default_shell = $profiles::accounts::config::default_shell
+class profiles::system::accounts::system {
+  include profiles::system::accounts::config
+  $default_shell = $profiles::system::accounts::config::default_shell
 
   # Group resource defaults
   Group {

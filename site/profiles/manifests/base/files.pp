@@ -1,4 +1,4 @@
-class profiles::files {
+class profiles::base {
   if $::kernel in [ 'Linux', 'AIX' ] {
     file { '/etc/issue.net':
       ensure => link,

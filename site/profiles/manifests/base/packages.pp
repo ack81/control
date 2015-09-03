@@ -1,4 +1,4 @@
-class profiles::packages (
+class profiles::base::packages (
   $packages_install = [
     'parted',
     'net-snmp-utils',

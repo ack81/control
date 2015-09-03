@@ -1,4 +1,4 @@
-class profiles::selinux (
+class profiles::base::selinux (
   $selinux      = 'disabled',
   $selinux_type = 'targeted',) {
   case $::osfamily {
@@ -7,7 +7,7 @@ class profiles::selinux (
         mode    => '0644',
         owner   => '0',
         group   => '0',
-        content => template('profiles/selinux/config.erb'),
+        content => template('profiles/base/selinux/config.erb'),
       }
 
       exec { 'setenforce':

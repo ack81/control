@@ -1,6 +1,6 @@
-class profiles::pe_master::r10k (
+class profiles::puppet::pe_master::r10k (
   $pe_control_repo   = 'ssh://git@gitprdrk01v.wsgc.com/puppet/control.git',
-  $pe_deploy_ssh_key = template('profiles/pe_master/puppetmaster.rsa'),
+  $pe_deploy_ssh_key = template('profiles/puppet/pe_master/puppetmaster.rsa'),
 ) {
   include r10k::mcollective
 
@@ -27,7 +27,7 @@ class profiles::pe_master::r10k (
     owner   => '0',
     group   => '0',
     mode    => '0644',
-    content => template('profiles/pe_master/config'),
+    content => template('profiles/puppet/pe_master/config.erb'),
     require => File['/root/.ssh'],
   }
 

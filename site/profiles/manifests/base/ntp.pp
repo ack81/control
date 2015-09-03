@@ -1,4 +1,4 @@
-class profiles::ntp {
+class profiles::base::ntp {
   $ntp_servers   = [
     '192.168.41.123',
     '192.168.152.123',

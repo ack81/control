@@ -1,4 +1,4 @@
-class profiles::mta (
+class profiles::base::mta (
   $mta_relayhost = 'mailhost.wsgc.com',) {
   case $::osfamily {
     'RedHat' : {

@@ -1,4 +1,4 @@
-class profiles::syslog {
+class profiles::base::syslog {
 
   case $::osfamily {
     'RedHat': {
