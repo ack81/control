@@ -1,37 +1,39 @@
 class profiles::base::grub {
-  file { 'etc_grub.conf':
-    ensure => link,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0777',
-    target => '/boot/grub/grub.conf',
-    path   => '/etc/grub.conf',
-  }
 
-  file { 'grub.conf':
-    ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0600',
-    path   => '/boot/grub/grub.conf',
+  case $::osfamily {
+    'RedHat', 'OLE' : {
+      if $::operatingsystemmajrelease == 6 {
+        ....
+        # - sets the values for the below parameters for each kernel version in /boot/grub/grub.conf
+        # - removes the quiet option
+        augeas { 'grub.conf':
+          context => '/files/boot/grub/grub.conf',
+          changes => [
+          'setm title[*]/kernel crashkernel 128M',
+          'setm title[*]/kernel numa off',
+          'setm title[*]/kernel console ttyS1,115200n8',
+          'setm title[*]/kernel transparent_hugepage never',
+          'setm title[*]/kernel rdloaddriver scsi_dh_rdac',
+          'rm title[*]/kernel/quiet',
+          ],
+        } ->
+        ....
+        # - replaces multiple rhgb options with a single one before the crashkernel option
+        # - add debug option before the newly added rhgb
+        # - only do this change if not already done
+        augeas { 'grub_debug_option':
+          context => '/files/boot/grub/grub.conf',
+          changes => [
+            'rm title[*]/kernel/rhgb',
+            'ins rhgb before title[1]/kernel/crashkernel',
+            'ins debug after title[1]/kernel/rhgb',
+          ],
+          onlyif  => 'match title[1]/kernel/debug size == 0',
+        }
+      }
+    }
+    default  : {
+      fail("The OS Family ${::osfamily} is not supported by ${title}")
+    }
   }
-
-  exec { 'grub_selinux':
-    path    => '/bin',
-    command => 'sed -ie "s/selinux=1/selinux=0/g" /boot/grub/grub.conf',
-    onlyif  => 'grep "selinux=1" /boot/grub/grub.conf',
-  }
-
-  exec { 'grub_audit_missing':
-    path    => '/bin',
-    command => 'sed -ie "/kernel /s/$/ audit=1/g" /boot/grub/grub.conf',
-    unless  => 'grep "audit=" /boot/grub/grub.conf',
-  }
-
-  exec { 'grub_audit':
-    path    => '/bin:/usr/bin',
-    command => 'sed -ie "/audit=./ s///g" /boot/grub/grub.conf && sed -ie "/kernel /s/$/ audit=1/g" /boot/grub/grub.conf',
-    unless  => 'test `grep -v "^#" /boot/grub/grub.conf | grep "audit=1" | wc -l` = `grep -v "^#" /boot/grub/grub.conf | grep "kernel" | wc -l` && grep -v "^#" /boot/grub/grub.conf | grep "audit=1"',
-  }
-
 }

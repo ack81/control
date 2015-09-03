@@ -1,13 +1,13 @@
 class profiles::base::mta (
-  $mta_relayhost = 'mailhost.wsgc.com',) {
+  $mta_relayhost = 'relay.apple.com',) {
   case $::osfamily {
     'RedHat' : {
       class { '::postfix':
         relayhost => $mta_relayhost,
         myorigin  => $::fqdn,
-        options   => {
-          inet_protocols => 'ipv4'
-        }
+        # options   => {
+        #   inet_protocols => 'ipv4'
+        # }
       }
     }
     default  : {
