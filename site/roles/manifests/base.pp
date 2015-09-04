@@ -1,18 +1,18 @@
 # base.pp
 
 class roles::base {
-  include ::profiles::accounts::config
-  include ::profiles::accounts::priv
-  include ::profiles::accounts::service
-  include ::profiles::files
-  include ::profiles::firstrun
-  include ::profiles::grub
-  include ::profiles::logrotate
-  include ::profiles::mta
-  include ::profiles::ntp
-  include ::profiles::packages
-  include ::profiles::repo
-  include ::profiles::selinux
-  include ::profiles::syslog
+  include ::profiles::base::accounts::config
+  include ::profiles::base::accounts::priv
+  include ::profiles::base::accounts::service
+  include ::profiles::base::files
+  include ::profiles::base::firstrun
+  include ::profiles::base::grub
+  include ::profiles::base::logrotate
+  include ::profiles::base::mta
+  include ::profiles::base::ntp
+  include ::profiles::base::packages
+  include ::profiles::base::repo
+  include ::profiles::base::selinux
+  include ::profiles::base::syslog
 }
 
